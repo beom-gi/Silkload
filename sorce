@@ -1,0 +1,656 @@
+*{
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+}
+::-webkit-scrollbar {
+  display: none;
+}
+.ngb{
+  width: 1280px;
+  text-align: center;
+}
+.ngb > a > img{
+  position: relative;
+  left: 9%;
+}
+.ngb > span{
+  display: inline-block;
+  float: right;
+}
+.ngb > span > a{
+  color: #333;
+  font-size: 14px;
+}
+.jbFixed {
+  position: fixed;
+  top: 0px;
+}
+#header > ul{
+  width: 100%;
+  height: 50px;
+  background: #333;
+  text-align: center;
+  z-index: 60;
+}
+#header > ul > li{
+  width: 150px;
+  height: 50px;
+  display: inline-block;
+  padding-top: 12px;
+}
+#header > ul > li > a{
+  color: #fff;
+  font-size: 14px;
+}
+.dropdown > li{
+  width: 155.7px;
+  line-height: 50px;
+}
+.dropdown > li > a{
+  font-size: 14px;
+  color: #fff;
+}
+.dropdown > li > a:hover{
+  transition: 0.3s;
+  color: #999;
+}
+.dropdown{
+  position: absolute;
+  background: #fff;
+  color: #333;
+  margin-top: 15px;
+  height: 300px;
+  background: #333;
+  opacity: 0.9;
+  display: none;
+  z-index: 50;
+}
+#content > img{
+  width: 100%;
+  display: none;
+  position: absolute;
+  cursor: pointer;
+}
+#content > img:first-child{
+  display: block;
+}
+#content{
+  position: relative;
+  overflow: hidden;
+  height: 775px;
+}
+#content > p{
+  font-size: 52px;
+  color: #fff;
+	top: 50%;
+	left: 51%;
+  position: absolute;
+  z-index: 3;
+}
+/* #font{
+  position: relative;
+}
+#font > p{
+  font-size: 52px;
+  color: #fff;
+	bottom: 90px;
+	left: 51%;
+  position: absolute;
+} */
+.title{
+  width: 1280px;
+}
+.title > h1{
+  text-align: center;
+  padding-top: 65px;
+  width: 400px;
+  border-top: 1px solid #333;
+  margin-top: 180px;
+}
+.notice, .notice_1{
+  text-align: center;
+  width: 1280px;
+  margin-top: 50px;
+}
+.hover{
+  float: left;
+  margin-left: 36.5px;
+  background: #333;
+  width: 380px;
+  height: 207px;
+  overflow: hidden;
+  border: 4px solid #333;
+}
+.hover > img{
+  width: 380px;
+  transform: scale(1);
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -ms-transform: scale(1);
+  -o-transform: scale(1);
+  transition: all 0.5s ease-in-out;
+  cursor: pointer;
+}
+.hover > img:hover{
+  transform: scale(1.2);
+  -webkit-transform: scale(1.2);
+  -moz-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  -o-transform: scale(1.2);
+  opacity: 0.7;
+}
+.text, .text_1{
+  width: 1280px;
+  text-align: center;
+}
+.text > a, .text_1 > a{
+  font-size: 15px;
+  width: 250px;
+  display: inline-block;
+  color: #333;
+  padding-top: 17px;
+  margin-top: 40px;
+  border-top: 1px solid #333;
+}
+.text > a:nth-child( 2 ), .text_1 > a:nth-child( 2 ){
+  margin: 0px 160px 0 160px;
+}
+.video {
+  width: 1280px;
+  text-align: center;
+  padding-top: 100px;
+}
+.top > a{
+  line-height: 40px;
+  text-align: center;
+  border-radius: 50%;
+  background: #333;
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  right: 20px;
+  top: 90%;
+  opacity: 0.8;
+  color: #fff;
+}
+#footer{
+  margin-top: 150px;
+  height: 170px;
+  background: #333;
+}
+#footer > img{
+  margin: 20px 0 0 100px;
+  position: absolute;
+}
+#footer > p{
+  width: 1280px;
+  text-align: center;
+  color: #fff;
+  padding-top: 50px;
+}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <link rel="stylesheet" href="silkload.css">
+    <meta charset="utf-8">
+    <title>silkload</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script>
+    $( document ).ready( function() {
+      var jbOffset = $( 'ul' ).offset();
+      $( window ).scroll( function() {
+        if ( $( document ).scrollTop() > jbOffset.top ) {
+          $( 'ul' ).addClass( 'jbFixed' );
+        }
+        else {
+          $( 'ul' ).removeClass( 'jbFixed' );
+        }
+      });
+    });
+    
+    $(function(){
+  		$('#header>ul>li').mouseenter(function(){
+  			$('#header>ul>li').find('.dropdown').stop().slideDown();
+  		});
+  		$('#header>ul>li').mouseleave(function(){
+  			$('#header>ul>li').find('.dropdown').stop().slideUp();
+  		});
+  	});
+
+    $(function(){
+  		$(window).scroll(function(){
+  			var scrollTopNum=$(document).scrollTop();
+  			if(scrollTopNum<=41){
+  				scrollTopNum=41;
+  			}
+  			$('.top>a').stop().animate({top:scrollTopNum+635}, 635);
+  		});
+  	});
+
+    $(function(){
+  	 $('.top>a').click(function(event){
+  		 event.preventDefault();
+  		 var section=$($(this).attr('href'));
+  	 	 $('html, body').animate({scrollTop:section.offset().top},800);
+    	});
+    });
+
+    $(function(){
+  		function slidePoster(){
+  			var imgs=$('#content').find('img');
+  			var first=imgs.eq(0);
+  			var second=imgs.eq(1);
+  			second.fadeIn(2000);
+  			first.fadeOut(2000, function(){
+  				first.appendTo($('#content'));
+  			});
+  		}
+  		setInterval(slidePoster,4000);
+  	});
+    </script>
+  </head>
+  <body>
+    <div id="header">
+      <div class="ngb">
+        <a href="silkload.html"><img src="img/logo.jpg" ></a>
+        <span>
+          <a href="#">로그인 |</a>
+          <a href="#">회원가입 |</a>
+          <a href="#">멤버십 |</a>
+          <a href="#">고객문의</a>
+        </span>
+      </div>
+      <ul>
+        <li><a href="#">객실</a>
+          <ul class="dropdown">
+            <li><a href="#">SUPERIOR DOUBLE</a></li>
+            <li><a href="#">SUPERIOR TWIN</a></li>
+            <li><a href="#">ROYAL SUITE ROOM</a></li>
+            <li><a href="#">JUNIOR SUITE ROOM</a></li>
+            <li><a href="#">FAMILY ROOM</a></li>
+            <li><a href="#">COOKING ROOM</a></li>
+          </ul>
+        </li>
+        <li><a href="#">프로모션</a>
+          <ul class="dropdown">
+            <li><a href="#">호텔패키지</a></li>
+            <li><a href="#">룸 프로모션</a></li>
+            <li><a href="#">호텔 이벤트</a></li>
+            <li><a href="#">스페셜딜</a></li>
+          </ul>
+        </li>
+        <li><a href="#">시설·서비스</a>
+          <ul class="dropdown">
+            <li><a href="#">BANQUET HALL</a></li>
+            <li><a href="#">FITNESS CENTER</a></li>
+            <li><a href="#">SCREENGOLF ZONE</a></li>
+            <li><a href="#">MASSAGE</a></li>
+            <li><a href="#">PARKING LOT</a></li>
+          </ul>
+        </li>
+        <li><a href="#">호텔소개</a>
+          <ul class="dropdown">
+            <li><a href="#">호텔스토리</a></li>
+            <li><a href="#">브랜드 소개</a></li>
+            <li><a href="#">뉴스</a></li>
+            <li><a href="#">서비스 아카데미</a></li>
+          </ul>
+        </li>
+        <li><a href="#">예약</a>
+          <ul class="dropdown">
+            <li><a href="#">예약하기</a></li>
+            <li><a href="silkload_1.html">예약조회</a></li>
+          </ul>
+        </li>
+    </div>
+    <div id="content">
+      <img src="img/main1.jpg">
+      <img src="img/main2.jpg">
+      <img src="img/main3.jpg">
+      <p>Spacious, Comfortable<br>Resonable place</p>
+    </div>
+      <div class="title">
+        <h1>accommodation</h1>
+      </div>
+      <div class="notice">
+        <div class="hover">
+          <img src="img/guest_1.png">
+        </div>
+        <div class="hover">
+          <img src="img/guest_2.png">
+        </div>
+        <div class="hover">
+          <img src="img/guest_6.png">
+        </div>
+      </div>
+      <div class="text">
+        <a href="#">SUPERIOR DOUBLE ROOM<br>슈페리어 더블<br><br>190,000won</a>
+        <a href="#">SUPERIOR TWIN ROOM<br>슈페리어 트윈<br><br>190,000won</a>
+        <a href="#">ROYAL SUITE ROOM<br>로얄 스위트<br><br>250,000won</a>
+      </div>
+      <div class="notice_1">
+        <div class="hover">
+          <img src="img/guest_3.png">
+        </div>
+        <div class="hover">
+          <img src="img/guest_4.png">
+        </div>
+        <div class="hover">
+          <img src="img/guest_5.png">
+        </div>
+      </div>
+      <div class="text_1">
+        <a href="#">JUNIOR SUITE ROOM<br>주니어 스위트<br><br>220,000won</a>
+        <a href="#">FAMILY ROOM<br>가족룸<br><br>250,000won</a>
+        <a href="#">COOKING ROOM<br>취사가능 객실<br><br>220,000won</a>
+      </div>
+      <div class="title">
+        <h1>gallery</h1>
+      </div>
+      <aside class="top">
+        <a href="#header">top</a>
+      </aside>
+      <div class="video">
+        <iframe width="800" height="500" src="https://serviceapi.nmv.naver.com/flash/convertIframeTag.nhn?vid=A4FF6A62621D513814EA06898225236B08BC&outKey=V123380f1d3dd32f01950d2a0111826c28d30de30c8efe612cad7d2a0111826c28d30" frameborder="no" scrolling="no" title="NaverVideo" allow="autoplay; gyroscope; accelerometer; encrypted-media" allowfullscreen></iframe>
+      </div>
+    <div id="footer">
+      <img src="img/logo1.gif">
+      <p>수원실크로드호텔 | 경기도 수원시 팔달구 인계동 1022 | 대표 : 박묘은 | 사업자번호 : 132-01-35986<br>
+         tel : 031-232-9981 | fax : 031-232-9982 | E-mail : hotelsilkroad@hanmail.net<br>
+         copyright 2009 hotel silkroad all right reserved.</p>
+    </div>
+  </body>
+</html>
+
+*{
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+}
+.ngb{
+  width: 1280px;
+  text-align: center;
+}
+.ngb > a > img{
+  position: relative;
+  left: 9%;
+}
+.ngb > span{
+  display: inline-block;
+  float: right;
+}
+.ngb > span > a{
+  color: #333;
+  font-size: 14px;
+}
+.jbFixed {
+  position: fixed;
+  top: 0px;
+}
+#header > ul{
+  width: 100%;
+  height: 50px;
+  background: #333;
+  text-align: center;
+  z-index: 60;
+}
+#header > ul > li{
+  width: 150px;
+  height: 50px;
+  display: inline-block;
+  padding-top: 12px;
+}
+#header > ul > li > a{
+  color: #fff;
+  font-size: 14px;
+}
+.dropdown > li{
+  width: 155.7px;
+  line-height: 50px;
+}
+.dropdown > li > a{
+  font-size: 14px;
+  color: #fff;
+}
+.dropdown > li > a:hover{
+  transition: 0.3s;
+  color: #999;
+}
+.dropdown{
+  position: absolute;
+  background: #fff;
+  color: #333;
+  margin-top: 17px;
+  height: 300px;
+  background: #333;
+  opacity: 0.9;
+  display: none;
+  z-index: 50;
+}
+#content{
+  text-align: center;
+  width: 1280px;
+  color: #333;
+}
+.text{
+  margin-top: 80px;
+}
+.text > p{
+  margin-top: 40px;
+}
+.ask{
+  margin-top: 130px;
+  width: 800px;
+}
+.ask > p{
+  font-size: 20px;
+  border: solid 1px #333;
+  border-bottom: none;
+  padding-top: 15px;
+}
+.select{
+  width: 600px;
+  height: 100px;
+  text-align: left;
+  margin: 30px 0 0 100px;
+}
+select {
+  width: 600px;
+  padding: .8em .5em;
+  font-family: inherit;
+  background: url(https://farm1.staticflickr.com/379/19928272501_4ef877c265_t.jpg) no-repeat 95% 50%;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: 1px solid #ccc;
+  color: #888;
+  border-radius: 0px;
+  margin-top: 15px;
+  cursor: pointer;
+}
+#id{
+  margin-top: 20px;
+  font-size:14px;
+  width:600px;
+  height: 41px;
+  padding:5px;
+  line-height:20px;
+  border:1px solid #ccc;
+}
+#name{
+  width: 298px;
+  height: 41px;
+  float: left;
+  margin-top: 20px;
+  padding: 5px;
+}
+#name:nth-child(2){
+  float: right;
+  margin-top: 43.2px;
+}
+.greybox{
+  color:#ccc;
+}
+p1{
+  font-weight: bold;
+  font-size: 18px;
+  float: left;
+}
+.btn{
+  width: 160px;
+  height: 50px;
+  line-height: 50px;
+  margin-top: 40px;
+  background: #333;
+  cursor: pointer;
+}
+.btn > p{
+  font-size: 20px;
+  color: #fff;
+}
+#footer{
+  margin-top: 150px;
+  height: 170px;
+  background: #333;
+}
+#footer > img{
+  margin: 20px 0 0 100px;
+  position: absolute;
+}
+#footer > p{
+  width: 1280px;
+  text-align: center;
+  color: #fff;
+  padding-top: 50px;
+}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <link rel="stylesheet" href="silkload_1.css">
+    <meta charset="utf-8">
+    <title>silkload</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script>
+    $( document ).ready( function() {
+      var jbOffset = $( 'ul' ).offset();
+      $( window ).scroll( function() {
+        if ( $( document ).scrollTop() > jbOffset.top ) {
+          $( 'ul' ).addClass( 'jbFixed' );
+        }
+        else {
+          $( 'ul' ).removeClass( 'jbFixed' );
+        }
+      });
+    });
+    $(function(){
+  		$('#header>ul>li').mouseenter(function(){
+  			$('#header>ul>li').find('.dropdown').stop().slideDown();
+  		});
+  		$('#header>ul>li').mouseleave(function(){
+  			$('#header>ul>li').find('.dropdown').stop().slideUp();
+  		});
+  	});
+    </script>
+  </head>
+  <body>
+    <div id="header">
+      <div class="ngb">
+        <a href="silkload.html"><img src="img/logo.jpg" ></a>
+        <span>
+          <a href="#">로그인 |</a>
+          <a href="#">회원가입 |</a>
+          <a href="#">멤버십 |</a>
+          <a href="#">고객문의</a>
+        </span>
+      </div>
+      <ul>
+        <li><a href="#">객실</a>
+          <ul class="dropdown">
+            <li><a href="#">SUPERIOR DOUBLE</a></li>
+            <li><a href="#">SUPERIOR TWIN</a></li>
+            <li><a href="#">ROYAL SUITE ROOM</a></li>
+            <li><a href="#">JUNIOR SUITE ROOM</a></li>
+            <li><a href="#">FAMILY ROOM</a></li>
+            <li><a href="#">COOKING ROOM</a></li>
+          </ul>
+        </li>
+        <li><a href="#">프로모션</a>
+          <ul class="dropdown">
+            <li><a href="#">호텔패키지</a></li>
+            <li><a href="#">룸 프로모션</a></li>
+            <li><a href="#">호텔 이벤트</a></li>
+            <li><a href="#">스페셜딜</a></li>
+          </ul>
+        </li>
+        <li><a href="#">시설·서비스</a>
+          <ul class="dropdown">
+            <li><a href="#">BANQUET HALL</a></li>
+            <li><a href="#">FITNESS CENTER</a></li>
+            <li><a href="#">SCREENGOLF ZONE</a></li>
+            <li><a href="#">MASSAGE</a></li>
+            <li><a href="#">PARKING LOT</a></li>
+          </ul>
+        </li>
+        <li><a href="#">호텔소개</a>
+          <ul class="dropdown">
+            <li><a href="#">호텔스토리</a></li>
+            <li><a href="#">브랜드 소개</a></li>
+            <li><a href="#">뉴스</a></li>
+            <li><a href="#">서비스 아카데미</a></li>
+          </ul>
+        </li>
+        <li><a href="#">예약</a>
+          <ul class="dropdown">
+            <li><a href="#">예약하기</a></li>
+            <li><a href="#">예약조회</a></li>
+          </ul>
+        </li>
+    </div>
+    <div id="content">
+      <div class="text">
+        <h1>예약조회/예약취소</h1>
+        <p>아래 정보를 기입하신 후, 확인 버튼을 눌러주십시오.<br>예약번호를 분실하신 고객님께서는 실크로드호텔 객실예약과로 직접 문의하여 주십시오.</p>
+      </div>
+      <div class="ask">
+        <p>객실 예약조회</p>
+        <div class="select">
+          <p1>객실선택</p1>
+          <select>
+            <option selected>객실선택</option>
+            <option>SUPERIOR DOUBLE</option>
+            <option>SUPERIOR TWIN</option>
+            <option>ROYAL SUITE ROOM</option>
+            <option>JUNIOR SUITE ROOM</option>
+            <option>FAMILY ROOM</option>
+            <option>COOKING ROOM</option>
+          </select>
+        </div>
+        <div class="select">
+          <p1>온라인 예약번호</p1>
+          <input type="text" name="pw" id="id" placeholder="예약 번호를 입력하세요.">
+        </div>
+        <div class="select">
+          <p1>성명(영문)</p1>
+          <input type="text" name="pw" id="name" placeholder="HONG(성)">
+          <input type="text" name="pw" id="name" placeholder="GILDONG(이름)">
+        </div>
+        <div class="btn">
+          <p>확인</p>
+        </div>
+      </div>
+    </div>
+    <div id="footer">
+      <img src="img/logo1.gif">
+      <p>수원실크로드호텔 | 경기도 수원시 팔달구 인계동 1022 | 대표 : 박묘은 | 사업자번호 : 132-01-35986<br>
+         tel : 031-232-9981 | fax : 031-232-9982 | E-mail : hotelsilkroad@hanmail.net<br>
+         copyright 2009 hotel silkroad all right reserved.</p>
+    </div>
+  </body>
+</html>
